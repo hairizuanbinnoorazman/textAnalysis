@@ -1,6 +1,9 @@
 package analyse
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestAnalyzeTop10(t *testing.T) {
 	testCases := []struct {
@@ -54,7 +57,7 @@ func TestAnalyzeTop10(t *testing.T) {
 
 	for _, singleTestCase := range testCases {
 		actualResult := top10words(singleTestCase.text)
-		if actualResult != singleTestCase.expectedOutput {
+		if !reflect.DeepEqual(actualResult, singleTestCase.expectedOutput) {
 			t.Error(singleTestCase.testCaseName, "failed. Expected:", singleTestCase.expectedOutput, "Actual:", actualResult)
 		}
 	}
