@@ -68,3 +68,21 @@ func TestAnalyzeTop10(t *testing.T) {
 		}
 	}
 }
+
+func TestRemovePunctuation(t *testing.T) {
+	testCases := []struct {
+		testCaseName string
+		text         string
+		expectedText string
+	}{
+		{"Remove punctuation - clean", "a a a a a", "a a a a a"},
+		{"Remove punctuation - scattered punctuation", "muscle. I have eaten already; the trials", "muscle I have eaten already the trials"},
+		{"Remove punctuation - multiple cases of punctuation", "muscle.... See the heavens;;!!", "muscle   See the heavens  "},
+	}
+	for _, singleTestCase := range testCases {
+		actualResult := removePuctuation(singleTestCase.text)
+		if actualResult != singleTestCase.expectedText {
+			t.Error(singleTestCase.testCaseName, "failed. Expected:", singleTestCase.expectedText, "Actual:", actualResult)
+		}
+	}
+}
