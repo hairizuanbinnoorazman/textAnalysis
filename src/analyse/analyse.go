@@ -21,7 +21,7 @@ func TopNwords(text string, limit int) []Word {
 }
 
 func removePuctuation(text string) string {
-	r, err := regexp.Compile(`[^a-zA-Z0-9]\s|[^a-zA-Z0-9][^a-zA-Z0-9/]`)
+	r, err := regexp.Compile(`[^a-zA-Z0-9]\s|[^a-zA-Z0-9][^a-zA-Z0-9]`)
 	if err != nil {
 		log.Println("Unable to read the regexp expression")
 	}
