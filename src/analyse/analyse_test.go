@@ -59,30 +59,26 @@ func TestAnalyzeTop10(t *testing.T) {
 				{"max-mega", 1},
 				{"unit-tests", 1},
 			}},
+		{"Edge case for complex input", "hello world. i'm here to co-operate! Unless...you're dangerous/awful",
+			[]Word{
+				{"awful", 1},
+				{"co-operate", 1},
+				{"dangerous", 1},
+				{"hello", 1},
+				{"here", 1},
+				{"i'm", 1},
+				{"to", 1},
+				{"unless", 1},
+				{"world", 1},
+				{"you're", 1},
+			}},
 	}
 
 	for _, singleTestCase := range testCases {
 		actualResult := TopNwords(singleTestCase.text, 10)
+		// When comparing slices, ensure that order for both slices to be compared is guaranteed, else reflect.DeepEqual returns false
 		if !reflect.DeepEqual(actualResult, singleTestCase.expectedOutput) {
 			t.Error(singleTestCase.testCaseName, "failed. Expected:", singleTestCase.expectedOutput, "Actual:", actualResult)
-		}
-	}
-}
-
-func TestRemovePunctuation(t *testing.T) {
-	testCases := []struct {
-		testCaseName string
-		text         string
-		expectedText string
-	}{
-		{"Remove punctuation - clean", "a a a a a", "a a a a a"},
-		{"Remove punctuation - scattered punctuation", "muscle. I have eaten already; the trials", "muscle I have eaten already the trials"},
-		{"Remove punctuation - multiple cases of punctuation", "muscle.... See the heavens;;!!", "muscle   See the heavens  "},
-	}
-	for _, singleTestCase := range testCases {
-		actualResult := removePuctuation(singleTestCase.text)
-		if actualResult != singleTestCase.expectedText {
-			t.Error(singleTestCase.testCaseName, "failed. Expected:", singleTestCase.expectedText, "Actual:", actualResult)
 		}
 	}
 }
