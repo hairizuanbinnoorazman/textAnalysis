@@ -23,6 +23,10 @@ func TestPost(t *testing.T) {
 		expectedOutput string
 	}{
 		{"Simple case", "a a a", -1, "{\"word_list\":[{\"text\":\"a\",\"frequency\":3}]}"},
+		{"Testing defaults", "a b c d e f g h i j k l", -1, "{\"word_list\":[{\"text\":\"a\"," +
+			"\"frequency\":1},{\"text\":\"b\",\"frequency\":1},{\"text\":\"c\",\"frequency\":1},{\"text\":\"d\",\"frequency\":1},{" +
+			"\"text\":\"e\",\"frequency\":1},{\"text\":\"f\",\"frequency\":1},{\"text\":\"g\",\"frequency\":1},{\"text\":\"h\"" +
+			",\"frequency\":1},{\"text\":\"i\",\"frequency\":1},{\"text\":\"j\",\"frequency\":1}]}"},
 	}
 
 	for _, singleTestCase := range testCases {
