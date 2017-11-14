@@ -13,20 +13,17 @@ func TopNwords(text string, limit int) []Word {
 	text = removePuctuation(text)
 
 	// Split the text data
-	stringSlice := strings.Split(text, " ")
+	stringSlice := splitText(text)
 
 	// Compute word count
 	wordCount := topNWordCount(stringSlice, limit)
 	return wordCount
 }
 
-func removePuctuation(text string) string {
-	r, err := regexp.Compile(`[^a-zA-Z0-9]\s|[^a-zA-Z0-9][^a-zA-Z0-9]`)
-	if err != nil {
-		log.Println("Unable to read the regexp expression")
-	}
-	text = r.ReplaceAllString(text, " ")
-	return text
+func splitText(text string) []string {
+	r := regexp.MustCompile(`(\w+['-]{1}\w+)|(\w+)`)
+	matches := r.FindAllString(text, -1)
+	return matches
 }
 
 type Word struct {
