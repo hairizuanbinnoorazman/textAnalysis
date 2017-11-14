@@ -30,8 +30,8 @@ func removePuctuation(text string) string {
 }
 
 type Word struct {
-	Text      string
-	Frequency int
+	Text      string `json:"text"`
+	Frequency int    `json:"frequency"`
 }
 
 type WordList []Word
