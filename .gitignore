@@ -7,3 +7,5 @@
 
 # Remove ide specific folders
 .idea
+pkg
+bin
