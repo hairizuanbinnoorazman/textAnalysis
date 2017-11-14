@@ -48,3 +48,11 @@ go run server.go
 curl http://localhost:3000/analysetext -H "Accept: application/json" -X POST -d '{"text":"a a a"}'
 ``` 
 
+To build the service, ensure that the gopath and gobin are configured accordingly. This may differ between users.
+Run either the commands
+```
+# Run either command:
+go install server
+go build server
+```
+
