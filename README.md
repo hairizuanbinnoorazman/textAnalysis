@@ -36,5 +36,15 @@ records from the list.
 - If there are less than 10 unique words, it will return with whatever that it has in the list
 - The list of words being returned is sorted by frequency and then sorted alphatecially from a-z
 - Words are returned as lowercase
-- Numbers are ignored as there are no numbers in words in the english vocabulary. This codebase is build on the assumption
-  that words being to used are not labels (e.g. Words from a research article etc) 
+
+## Running the service
+
+Running the service without building the binary for test run purposes
+```
+# Go to the folder that contains server.go in the src/server folder
+go run server.go
+
+# Running a test run
+curl http://localhost:3000/analysetext -H "Accept: application/json" -X POST -d '{"text":"a a a"}'
+``` 
+
