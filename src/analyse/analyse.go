@@ -1,7 +1,6 @@
 package analyse
 
 import (
-	"log"
 	"regexp"
 	"sort"
 	"strings"
@@ -10,7 +9,6 @@ import (
 func TopNwords(text string, limit int) []Word {
 	// Preprocessing the text data
 	text = strings.ToLower(text)
-	text = removePuctuation(text)
 
 	// Split the text data
 	stringSlice := splitText(text)
