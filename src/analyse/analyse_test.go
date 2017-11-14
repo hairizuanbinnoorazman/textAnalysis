@@ -53,6 +53,12 @@ func TestAnalyzeTop10(t *testing.T) {
 				{"g", 1},
 				{"h", 1},
 			}},
+		{"Check for special symbols", "i'm max-mega unit-tests",
+			[]Word{
+				{"i'm", 1},
+				{"max-mega", 1},
+				{"unit-tests", 1},
+			}},
 	}
 
 	for _, singleTestCase := range testCases {
