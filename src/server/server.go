@@ -25,9 +25,6 @@ func (h WordHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 	// Dealing with retrieving the limit value
 	var limit int
-	if queryLimit == "" {
-		limit = 10
-	}
 	limit, err := strconv.Atoi(queryLimit)
 	if err != nil {
 		log.Println("Unable to convert the limit accordingly. Will go back to defaut")
